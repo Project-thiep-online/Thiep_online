@@ -1,0 +1,1871 @@
+/* =========================================
+   KHÁCH MỜI - TRANG PHONG BÌ
+========================================= */
+
+.guest-invitation {
+
+    margin-top: 25px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+}
+
+
+.guest-title {
+
+    margin-bottom: 8px;
+
+    font-family:
+        "Be Vietnam Pro",
+        sans-serif;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+    color: #8a5a20;
+
+    text-transform: uppercase;
+
+}
+
+
+.guest-name {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 32px;
+
+    font-weight: 600;
+
+    color: #6b2525;
+
+    letter-spacing: 1px;
+
+    line-height: 1.2;
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Serif+Display&family=Great+Vibes&family=Noto+Serif:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-image: url("image/nền\ hỉ\ đỏ.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    color: #444;
+    margin:0;
+    width:100%;
+    min-height: 100vh;
+}
+
+.door {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 10;
+    background-image: url("image/hỉ.png");
+    background-repeat: no-repeat;
+    background-size: 200% 100%;
+    transition:
+        transform 1.8s cubic-bezier(.77, 0, .18, 1);
+    will-change: transform;
+}
+
+.door-left{
+    left: 0;
+    background-position: left center;
+    transform: translateX(0);
+    transform-origin: left center;
+}
+
+.door-right{
+    right: 0;
+    background-position: right center;
+    transform: translateX(0);
+    transform-origin: right center;
+}
+
+/*lớp phủ đỏ nhẹ */
+#welcome::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(100, 0, 0, .08);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.envelope{
+    position: relative;
+    z-index: 10;
+    width: min(90%, 600px);
+    padding: 60px 40px;
+    text-align:center;
+    background: rgba(255,255,255,.92);
+    border-radius: 20px;
+    border: 1px solid rgba(255,215,0,.7);
+    box-shadow:  0 10px 50px rgba(0,0,0,.35);
+    border: 1px solid #d8ad45;
+    opacity: 1;
+    transform: scale(1);
+    transition:
+        opacity .6s ease,
+        transform .8s ease;
+}
+
+.letter p{
+    font-size: 15px;
+    letter-spacing:4px;
+    color:#8b0000;
+    margin-bottom:12px;
+    font-weight: 500;
+}
+
+.letter h1 {
+    margin: 0 0 30px;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(48px, 5vw, 70px);
+    font-weight: 400;
+    line-height: 0.9;
+    color: #8B0000;
+    margin-bottom: 35px;
+}
+
+
+.letter h1 span{
+    display: block;
+    font-family: "Poppins", sans-serif;
+    font-size: 48px;
+    color: #C9A227;
+    margin: 5px 0;
+    line-height: 1;
+}
+
+#openCard{
+    position: relative;
+    z-index: 20;
+    padding: 15px 50px;
+    border: 2px solid #e5bd45;
+    border-radius: 50px;
+    background: #a51b1b;
+    color: #ffd966;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0,0,0,.25);
+    transition: all .3s ease;
+}
+
+#openCard:hover{
+    background: #8b0000;
+    transform: scale(1.05);
+    box-shadow:
+        0 0 25px rgba(255, 215, 0, .8);
+
+}
+
+#welcome{
+    position: fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    padding:0;
+    margin: 0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 99999;
+}
+
+
+#welcome.open .door-left{
+    transform:translateX(-100%);
+}
+
+
+#welcome.open .door-right{
+    transform:translateX(100%);
+}
+
+
+#welcome.open .envelope {
+    opacity:0;
+    transform:scale(.85);
+    pointer-events: none;
+}
+
+#welcome.hide{
+    display:none;
+}
+
+
+#card {
+    display: none;
+    width: 100%;
+    overflow: hidden;
+}
+
+#card section {
+    position: relative;
+    width: 100%;
+    padding: 90px 20px;
+}
+
+.section-inner{
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-subtitle {
+    margin-bottom: 12px;
+    color: #d7ad42;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 4px;
+}
+
+.section-inner > h2 {
+    margin-bottom: 40px;
+    color:#7d1717;
+    font-family: "Great Vibes", cursive;
+    font-size: 58px;
+    font-weight: 400;
+}
+
+.sectiion-symbol {
+    margin-bottom: 10px;
+    color: #c99a2e;
+    font-family: serif;
+    font-size: 45px;
+}
+
+.gold-line {
+    width: 100px;
+    height: 1px;
+    margin: 25px auto;
+    background: #d7ad42;
+}
+
+.home-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: 
+        linear-gradient(
+            rgba(100, 0, 0, .30),
+            rgba(100, 0, 0, .30)
+        ), 
+        url("image/nền\ hỉ\ đỏ.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat ;
+    color: white;
+}
+
+.home-content {
+    width: 100%;
+    max-width: 950px;
+
+    padding: 70px 50px;
+
+    text-align: center;
+
+    border: 1px solid rgba(238, 202, 105, .8);
+
+    background: rgba(100, 0, 0, .50);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .3);
+}
+
+.home-content .double-happiness {
+    margin-bottom: 5px;
+
+    color: #f1cd67;
+
+    font-family: serif;
+    font-size: 65px;
+}
+
+.save-date {
+    margin-bottom: 18px;
+
+    color: #f1d57e;
+
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 5px;
+}
+
+.couple-names {
+    margin: 0;
+
+    color: #fff;
+
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(48px, 7vw, 78px);
+    font-weight: 400;
+    line-height: 1.05;
+}
+
+.couple-names span {
+    display: block;
+
+    margin: 5px 0;
+
+    color: #edc65c;
+
+    font-size: 50px;
+}
+
+.home-date {
+    margin: 35px 0 50px;
+
+    color: #fff;
+
+    font-family: Georgia, serif;
+    font-size: 24px;
+    letter-spacing: 5px;
+}
+
+
+/* NHÀ TRAI - NHÀ GÁI */
+
+.families {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    border-top: 1px solid rgba(236, 197, 89, .7);
+    border-bottom: 1px solid rgba(236, 197, 89, .7);
+}
+
+.family {
+    min-height: 180px;
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.family:first-child {
+    border-right: 1px solid rgba(236, 197, 89, .7);
+}
+
+.family h3 {
+    margin: 0;
+    color: #f1d071;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+
+.family-line {
+    width: 50px;
+    height: 1px;
+    margin: 12px 0;
+    background: #dcb64d;
+}
+
+.family-box h3 {
+    font-size: 28px;
+}
+
+.family-box p {
+    font-size: 17px;
+}
+
+.family p {
+    margin: 3px 0;
+    color: #fff;
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+}
+
+.family-address {
+    margin-top: 10px !important;
+    color: rgba(255,255,255,.8) !important;
+    font-size: 12px !important;
+}
+
+
+/* lời mời*/
+
+.invitation-section {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(
+            rgba(255, 248, 242, .94),
+            rgba(255, 248, 242, .94)
+        ),
+        url("image/nền hỉ đỏ.jpg");
+    background-size: 500px;
+}
+
+.invitation-text {
+    max-width: 650px;
+    margin: 0 auto 25px;
+    color: #555;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 2;
+}
+
+.invitation-names {
+    margin: 20px 0;
+    color: #771818;
+    font-family: "Great Vibes", cursive;
+    font-size: 48px;
+    font-weight: 400;
+}
+
+.invitation-names span {
+    display: block;
+    color: #c69a32;
+    font-size: 38px;
+}
+
+.invitation-date {
+    color: #7d1717;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.invitation-note {
+    color: #777;
+    font-family: 'Noto Serif', serif;
+    font-size: 15px;
+    font-style: italic;
+}
+
+
+/* cô dâu chú rể */
+.couple-section {
+    background: #fff8f2;
+}
+
+.couple-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.person {
+    width: 350px;
+    text-align: center;
+}
+
+.person-image {
+    width: 280px;
+    height: 360px;
+    margin: 0 auto 25px;
+    overflow: hidden;
+    border: 6px solid #fff;
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.15);
+}
+
+.person-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.person-image:hover img {
+    transform: scale(1.05);
+}
+
+.person h3 {
+    margin-bottom: 5px;
+    color: #741515;
+    font-family: "Great Vibes", cursive;
+    font-size: 38px;
+    font-weight: 400;
+}
+
+.person > p {
+    color: #999;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.person-line {
+    width: 50px;
+    height: 1px;
+    margin: 15px auto;
+    background: #d1a33c;
+}
+
+.person-description {
+    max-width: 280px;
+    margin: auto;
+    color: #666;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.couple-and {
+    color: #c59a35;
+    font-family: "Great Vibes", cursive;
+    font-size: 75px;
+}
+
+/* album ảnh */
+.album-section {
+    background:
+        linear-gradient(
+            rgba(255,248,242,.94),
+            rgba(255,248,242,.94)
+        ),
+        url("image/nền hỉ đỏ.jpg");
+    background-size: 450px;
+}
+
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.album-item {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f8eeee;
+}
+
+.album-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+    background: #f8eeee;
+    transition: transform .4s ease
+}
+
+.album-item:hover img {
+    transform: scale(1.03);
+}
+
+.album-large,
+.album-wide {
+    height: auto;
+}
+
+/* thông ttin tiệc */
+.event-section {
+    background:
+        linear-gradient(
+            rgba(115, 0, 0, .88),
+            rgba(115, 0, 0, .88)
+        ),
+        url("image/nền hỉ đỏ.jpg");
+    background-size: cover;
+    color: white;
+}
+
+.event-section .section-subtitle {
+    color: #f1d070;
+}
+
+.event-section .section-inner > h2 {
+    color: white;
+}
+
+.event-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.event-card {
+    min-height: 260px;
+    padding: 35px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(240, 204, 106, .55);
+    background: rgba(255,255,255,.06);
+}
+
+.event-icon {
+    margin-bottom: 15px;
+    color: #edc75f;
+    font-size: 30px;
+}
+
+.event-card h3 {
+    margin-bottom: 12px;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.event-card p {
+    margin: 3px;
+    color: rgba(255,255,255,.8);
+    font-size: 14px;
+}
+
+.event-card strong {
+    margin-bottom: 8px;
+    color: #f1d16d;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+
+/* location+maPs*/
+.location-section {
+    background: #fff8f2;
+}
+
+.location-content {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 35px;
+    align-items: stretch;
+}
+
+.location-info {
+    padding: 45px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e2c87b;
+    background: #fff;
+}
+
+.location-icon {
+    margin-bottom: 15px;
+    color: #a51b1b;
+    font-size: 35px;
+}
+
+.location-info h3 {
+    margin-bottom: 10px;
+    color: #781616;
+    font-family: Georgia, serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.location-info p {
+    color: #666;
+    font-family: Georgia, serif;
+    line-height: 1.7;
+}
+
+.map-button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: 1px solid #a51b1b;
+    border-radius: 30px;
+    color: #a51b1b;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.map-button:hover {
+    background: #a51b1b;
+    color: white;
+}
+
+.map-box {
+    min-height: 350px;
+    overflow: hidden;
+    border: 1px solid #e2c87b;
+    background: #eee;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+}
+
+.map-placeholder i {
+    margin-bottom: 10px;
+    color: #a51b1b;
+    font-size: 45px;
+}
+
+
+/* sổ lưu bút */
+.guestbook-section {
+    background:
+        linear-gradient(
+            rgba(255,248,242,.94),
+            rgba(255,248,242,.94)
+        ),
+        url("image/nền hỉ đỏ.jpg");
+    background-size: 450px;
+}
+
+.guestbook-intro {
+    margin-bottom: 30px;
+    color: #666;
+    font-family: 'Noto Serif', serif;
+    font-size: 16px;
+}
+
+.guestbook-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.guestbook-form input,
+.guestbook-form textarea {
+    width: 100%;
+    padding: 15px 18px;
+    border: 1px solid #decfbd;
+    outline: none;
+    background: white;
+    color: #555;
+    font-family: Poppins, sans-serif;
+    transition: .3s;
+}
+
+.guestbook-form input:focus,
+.guestbook-form textarea:focus {
+    border-color: #a51b1b;
+    box-shadow:
+        0 0 0 2px rgba(165,27,27,.08);
+}
+
+.guestbook-form textarea {
+    resize: vertical;
+}
+
+.submit-button {
+    padding: 13px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #a51b1b;
+    color: white;
+    font-family: Poppins, sans-serif;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.submit-button:hover {
+    background: #7d1111;
+    transform: translateY(-2px);
+}
+
+.messages {
+    max-width: 600px;
+    margin: 35px auto 0;
+}
+
+.message-item {
+    margin-bottom: 12px;
+    padding: 15px 18px;
+    text-align: left;
+    border-left: 3px solid #c9a23d;
+    background: white;
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.06);
+}
+
+.message-item strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #851818;
+}
+
+.message-item p {
+    color: #666;
+    font-size: 14px;
+}
+
+
+/* lời cảm ơn */
+.thankyou-section {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(
+            rgba(100,0,0,.90),
+            rgba(100,0,0,.90)
+        ),
+        url("image/nền hỉ đỏ.jpg");
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+.thankyou-content {
+    max-width: 700px;
+}
+
+.thankyou-content .double-happiness {
+    margin-bottom: 10px;
+    color: #edc75f;
+    font-size: 65px;
+}
+
+.thankyou-content .section-subtitle {
+    color: #edc75f;
+}
+
+.thankyou-content h2 {
+    margin: 0 0 20px;
+    color: white;
+    font-family: "Great Vibes", cursive;
+    font-size: 70px;
+    font-weight: 400;
+}
+
+.thankyou-content > p {
+    max-width: 550px;
+    margin: 0 auto 30px;
+    color: rgba(255,255,255,.9);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+.thankyou-content h3 {
+    color: white;
+    font-family: "Great Vibes", cursive;
+    font-size: 42px;
+    font-weight: 400;
+}
+
+.thankyou-content h3 span {
+    color: #edc75f;
+}
+
+.thankyou-date {
+    margin-top: 20px;
+    color: #edc75f;
+    font-family: Georgia, serif;
+    letter-spacing: 4px;
+}
+
+.thankyou-symbol {
+    margin-top: 35px;
+    color: #edc75f;
+    font-size: 30px;
+}
+
+.wedding-footer { 
+    width: 100%; 
+    background: #160707; 
+    color: #fff; 
+    text-align: center; 
+    padding: 55px 20px 30px; 
+    border-top: 1px solid rgba(212, 166, 72, .5); 
+} 
+
+.footer-content { 
+    width: 100%; 
+    max-width: 1100px; 
+    margin: auto; 
+} 
+
+.footer-names { 
+    font-family: 'Great Vibes', cursive; 
+    font-size: 42px; 
+    color: #d8ae55; 
+    margin-bottom: 8px; 
+} 
+
+.footer-names span { 
+    display: inline-block; 
+    margin: 0 10px; 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 20px; 
+    color: #fff; 
+} 
+
+.footer-subtitle { 
+    margin: 0 0 30px; 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 11px; 
+    letter-spacing: 4px; 
+    color: #c9c9c9; 
+} 
+    
+.footer-menu { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    gap: 25px; 
+    margin-bottom: 30px; 
+} 
+
+.footer-menu a { 
+    color: #fff; 
+    text-decoration: none; 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 11px; 
+    letter-spacing: 1.5px; 
+    transition: .3s; 
+} 
+
+.footer-menu a:hover { 
+    color: #d8ae55; 
+} 
+
+.footer-line { 
+    width: 80px; 
+    height: 1px; 
+    background: #d8ae55; 
+    margin: 0 auto 25px; 
+    opacity: .7; 
+} 
+    
+.copyright { 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 12px; 
+    color: #ddd;
+    margin-bottom: 8px; 
+} 
+
+.designer { 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 11px; 
+    color: #999; 
+    letter-spacing: 1px; 
+} 
+
+.designer strong { 
+    color: #d8ae55; 
+    font-weight: 500; 
+}
+
+/* effect */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#card section {
+    animation: fadeUp .8s ease both;
+}
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+#card {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#card section {
+    width: 100%;
+}
+
+.section-inner {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+
+    #card section {
+        padding: 100px 30px;
+    }
+
+    .section-inner {
+        max-width: 1050px;
+    }
+
+    /* Trang đầu */
+    .home-content {
+        width: min(900px, 90%);
+        padding: 70px 50px;
+    }
+
+    .couple-names {
+        font-size: clamp(60px, 6vw, 82px);
+    }
+
+    /* Nhà gái - nhà trai */
+    .families {
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Album */
+    .album-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    #card section {
+        padding: 85px 30px;
+    }
+
+    .section-inner {
+        max-width: 900px;
+    }
+
+    .home-content {
+        width: 85%;
+        padding: 60px 40px;
+    }
+
+    .couple-names {
+        font-size: 65px;
+    }
+
+    .families {
+        width: 100%;
+    }
+
+    .family p {
+        font-size: 25px;
+    }
+
+    /* Cô dâu chú rể */
+    .couple-wrapper {
+        gap: 30px;
+    }
+
+    .person {
+        width: 300px;
+    }
+
+    .person-image {
+        width: 250px;
+        height: 330px;
+    }
+
+    /* Album */
+    .album-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    #card section {
+        padding: 75px 25px;
+    }
+
+    .section-inner {
+        max-width: 700px;
+    }
+
+    /* Mở thiệp */
+    .envelope {
+        width: 80%;
+        max-width: 580px;
+        padding: 50px 30px;
+    }
+
+    .letter h1 {
+        font-size: 58px;
+    }
+
+    .letter h1 span {
+        font-size: 42px;
+    }
+
+    /* Trang chủ */
+    .home-content {
+        width: 90%;
+        padding: 55px 30px;
+    }
+
+    .home-content .double-happiness {
+        font-size: 55px;
+    }
+
+    .save-date {
+        font-size: 12px;
+        letter-spacing: 4px;
+    }
+
+    .couple-names {
+        font-size: 58px;
+    }
+
+    .couple-names span {
+        font-size: 40px;
+    }
+
+    .home-date {
+        font-size: 20px;
+    }
+
+    /* Nhà gái - nhà trai */
+    .families {
+        width: 100%;
+    }
+
+    .family {
+        min-height: 170px;
+        padding: 25px 15px;
+    }
+
+    .family h3 {
+        font-size: 21px;
+    }
+
+    .family p {
+        font-size: 18px;
+    }
+
+    .family-address {
+        font-size: 11px !important;
+    }
+
+
+    /* Lời mời */
+    .invitation-text {
+        max-width: 600px;
+        font-size: 17px;
+    }
+
+    .invitation-names {
+        font-size: 48px;
+    }
+
+    /* Cô dâu chú rể */
+    .couple-wrapper {
+        gap: 20px;
+    }
+
+    .person {
+        width: 280px;
+    }
+
+    .person-image {
+        width: 230px;
+        height: 300px;
+    }
+
+    .person h3 {
+        font-size: 35px;
+    }
+
+    .couple-and {
+        font-size: 60px;
+    }
+
+    /* Album */
+    .album-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .album-item {
+        aspect-ratio: 3 / 4;
+        height: auto;
+    }
+
+    /* Tiệc */
+    .event-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .event-card {
+        min-height: 220px;
+        padding: 25px 12px;
+    }
+
+
+    /* Địa điểm */
+    .location-content {
+        grid-template-columns: 1fr 1.2fr;
+        gap: 20px;
+    }
+
+    /* Footer */
+    .footer-names {
+        font-size: 38px;
+    }
+
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+    #card section {
+        padding: 60px 18px;
+    }
+
+    .section-inner {
+        max-width: 100%;
+    }
+
+    .section-inner > h2 {
+        font-size: 40px;
+        margin-bottom: 30px;
+    }
+
+    #welcome {
+        width: 100vw;
+        height: 100dvh;
+    }
+
+    .envelope {
+        width: 88%;
+        max-width: 500px;
+        padding: 45px 20px;
+    }
+
+    .letter p {
+        font-size: 13px;
+        letter-spacing: 3px;
+    }
+
+    .letter h1 {
+        font-size: 50px;
+        line-height: .95;
+        margin-bottom: 30px;
+    }
+
+    .letter h1 span {
+        font-size: 35px;
+    }
+
+    #openCard {
+        padding: 13px 35px;
+        font-size: 14px;
+    }
+
+    .home-section {
+        min-height: 100dvh;
+        padding: 40px 15px !important;
+    }
+
+    .home-content {
+        width: 100%;
+        max-width: 600px;
+        padding: 40px 20px;
+    }
+
+    .home-content .double-happiness {
+        font-size: 50px;
+    }
+
+    .save-date {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .couple-names {
+        font-size: 50px;
+        line-height: 1.05;
+    }
+
+    .couple-names span {
+        font-size: 35px;
+        margin: 3px 0;
+    }
+
+    .home-date {
+        font-size: 18px;
+        letter-spacing: 3px;
+        margin: 25px 0 35px;
+    }
+
+    .families {
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+
+    .family {
+        min-height: 170px;
+        padding: 20px 8px;
+    }
+
+    .family h3 {
+        font-size: 17px;
+        letter-spacing: 1px;
+    }
+
+    .family p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .family-address {
+        font-size: 10px !important;
+        line-height: 1.4;
+    }
+
+    .invitation-text {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .invitation-names {
+        font-size: 40px;
+        line-height: 1.15;
+    }
+
+    .invitation-names span {
+        font-size: 30px;
+    }
+
+    .couple-wrapper {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .person {
+        width: 100%;
+    }
+
+    .person-image {
+        width: 230px;
+        height: 300px;
+    }
+
+    .person h3 {
+        font-size: 38px;
+    }
+
+    .couple-and {
+        font-size: 55px;
+    }
+
+    .album-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .album-item {
+        width: 100%;
+        height: auto !important;
+        aspect-ratio: 3 / 4;
+        border-radius: 9px;
+    }
+
+    .album-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        background: #f8eeee;
+    }
+
+    .album-large {
+        height: auto !important;
+        grid-row: span 2;
+    }
+
+    .album-wide {
+        grid-column: span 2;
+    }
+
+    .event-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .event-card {
+        min-height: 200px;
+    }
+
+    .location-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .map-box,
+    .map-placeholder {
+        min-height: 280px;
+    }
+
+
+    .guestbook-form {
+        width: 100%;
+    }
+
+    .thankyou-content h2 {
+        font-size: 55px;
+    }
+
+    .thankyou-content h3 {
+        font-size: 34px;
+    }
+
+
+    /* footer*/
+
+    .wedding-footer {
+        padding: 45px 15px 25px;
+    }
+
+    .footer-names {
+        font-size: 30px;
+    }
+
+    .footer-names span {
+        font-size: 15px;
+        margin: 0 5px;
+    }
+
+    .footer-menu {
+        gap: 10px 15px;
+    }
+
+}
+
+
+/* đt nhỏ*/
+
+@media (max-width: 480px) {
+
+    #card section {
+        padding: 50px 15px;
+    }
+
+    .section-inner > h2 {
+        font-size: 34px;
+        margin-bottom: 28px;
+    }
+
+
+    /* open */
+
+    #welcome {
+        width: 100vw;
+        height: 100dvh;
+    }
+
+    .envelope {
+        width: 90%;
+        max-width: 360px;
+        padding: 35px 15px;
+        border-radius: 15px;
+    }
+
+    .letter p {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .letter h1 {
+        font-size: 43px;
+        line-height: .95;
+        margin-bottom: 25px;
+    }
+
+    .letter h1 span {
+        font-size: 30px;
+        margin: 3px 0;
+    }
+
+    #openCard {
+        padding: 12px 30px;
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+
+    /* home */
+
+    .home-section {
+        min-height: 100dvh;
+        padding: 35px 12px !important;
+    }
+
+    .home-content {
+        width: 100%;
+        max-width: 380px;
+        padding: 35px 12px;
+    }
+
+    .home-content .double-happiness {
+        font-size: 45px;
+    }
+
+    .save-date {
+        font-size: 10px;
+        letter-spacing: 2.5px;
+    }
+
+    .couple-names {
+        font-size: clamp(38px, 12vw, 48px);
+        line-height: 1.05;
+    }
+
+    .couple-names span {
+        font-size: 28px;
+        margin: 4px 0;
+    }
+
+    .home-date {
+        font-size: 14px;
+        letter-spacing: 2px;
+        margin: 25px 0 30px;
+    }
+
+
+    /* nhà trai-nhà gái*/
+
+    .families {
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+
+    .family {
+        min-height: 150px;
+        padding: 16px 5px;
+    }
+
+    .family h3 {
+        font-size: 14px;
+        letter-spacing: .5px;
+    }
+
+    .family-line {
+        width: 35px;
+        margin: 8px 0;
+    }
+
+    .family p {
+        font-size: 10px;
+        line-height: 1.5;
+    }
+
+    .family-address {
+        font-size: 8px !important;
+        line-height: 1.4 !important;
+    }
+
+
+    /* lời mời*/
+
+    .invitation-text {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .invitation-names {
+        font-size: 35px;
+        line-height: 1.15;
+    }
+
+    .invitation-names span {
+        font-size: 27px;
+    }
+
+    .invitation-date {
+        font-size: 15px;
+    }
+
+
+    /* ccdau-cre*/
+
+    .couple-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .person {
+        width: 100%;
+    }
+
+    .person-image {
+        width: min(230px, 80vw);
+        height: 300px;
+    }
+
+    .person h3 {
+        font-size: 38px;
+    }
+
+    .person-description {
+        max-width: 300px;
+        font-size: 13px;
+    }
+
+    .couple-and {
+        font-size: 50px;
+    }
+
+
+    /* album */
+
+    .album-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .album-item {
+        width: 100%;
+        height: auto !important;
+        aspect-ratio: 3 / 4;
+        border-radius: 7px;
+        overflow: hidden;
+        background: #f8eeee;
+    }
+
+    .album-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        display: block;
+    }
+
+    .album-large {
+        height: auto !important;
+        grid-row: span 2;
+    }
+
+
+    /* event*/
+
+    .event-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .event-card {
+        min-height: 190px;
+        padding: 25px 15px;
+    }
+
+
+    /* location */
+
+    .location-content {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .location-info {
+        padding: 35px 20px;
+    }
+
+    .map-box,
+    .map-placeholder {
+        min-height: 270px;
+    }
+
+    /* lưu bút */
+    .guestbook-form input,
+    .guestbook-form textarea {
+        font-size: 14px;
+    }
+
+    /* lời cảm ơn cuối*/
+    .thankyou-section {
+        min-height: 70vh;
+    }
+
+    .thankyou-content {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .thankyou-content .double-happiness {
+        font-size: 50px;
+    }
+
+    .thankyou-content h2 {
+        font-size: 48px;
+    }
+
+    .thankyou-content > p {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .thankyou-content h3 {
+        font-size: 32px;
+    }
+
+
+    /* footer*/
+
+    .wedding-footer {
+        padding: 40px 12px 25px;
+    }
+
+    .footer-names {
+        font-size: 26px;
+        line-height: 1.3;
+    }
+
+    .footer-names span {
+        font-size: 13px;
+        margin: 0 4px;
+    }
+
+    .footer-subtitle {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .footer-menu {
+        gap: 10px 12px;
+    }
+
+    .footer-menu a {
+        font-size: 8px;
+        letter-spacing: .5px;
+    }
+
+    .copyright {
+        font-size: 10px;
+    }
+
+    .designer {
+        font-size: 9px;
+    }
+
+}
+
+
+/* mini phone */
+
+@media (max-width: 360px) {
+
+    .envelope {
+        padding: 30px 10px;
+    }
+
+    .letter h1 {
+        font-size: 38px;
+    }
+
+    .letter h1 span {
+        font-size: 27px;
+    }
+
+    .couple-names {
+        font-size: 37px;
+    }
+
+    .couple-names span {
+        font-size: 25px;
+    }
+
+    .family h3 {
+        font-size: 12px;
+    }
+
+    .family p {
+        font-size: 9px;
+    }
+
+    .family-address {
+        font-size: 7.5px !important;
+    }
+
+    .invitation-names {
+        font-size: 31px;
+    }
+
+    .person h3 {
+        font-size: 34px;
+    }
+
+    .footer-names {
+        font-size: 23px;
+    }
+
+}
+
+
+/* chống tràn nội dung*/
+
+.home-content,
+.section-inner,
+.families,
+.event-cards,
+.location-content,
+.guestbook-form,
+.footer-content {
+    max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+    overflow-wrap: break-word;
+}
